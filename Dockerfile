@@ -17,9 +17,16 @@ RUN apt-get update && apt-get install -y \
     clang \
     curl \
     zip \
+    unzip \
     gcc-aarch64-linux-gnu \
     gcc-arm-linux-gnueabi \
     && rm -rf /var/lib/apt/lists/*
+
+# Install magiskboot for repacking boot.img
+RUN curl -L -o /tmp/magisk.apk https://github.com/topjohnwu/Magisk/releases/download/v27.0/Magisk-v27.0.apk && \
+    unzip -p /tmp/magisk.apk lib/x86_64/libmagiskboot.so > /usr/local/bin/magiskboot && \
+    chmod +x /usr/local/bin/magiskboot && \
+    rm /tmp/magisk.apk
 
 WORKDIR /src
 
