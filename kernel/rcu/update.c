@@ -640,3 +640,11 @@ void __init rcupdate_announce_bootup_oddness(void)
 }
 
 #endif /* #ifndef CONFIG_TINY_RCU */
+
+#ifdef CONFIG_TASKS_TRACE_RCU
+#ifdef CONFIG_DEBUG_LOCK_ALLOC
+struct lockdep_map rcu_trace_lock_map =
+	STATIC_LOCKDEP_MAP_INIT("rcu_read_lock_trace", &rcu_trace_lock_map);
+EXPORT_SYMBOL_GPL(rcu_trace_lock_map);
+#endif
+#endif
