@@ -55,6 +55,8 @@ podman run --rm \
     -e LLVM=1 \
     -e CROSS_COMPILE=aarch64-linux-gnu- \
     -e CROSS_COMPILE_ARM32=arm-linux-gnueabi- \
+    -e KBUILD_BUILD_USER="crashunix" \
+    -e KBUILD_BUILD_HOST="github.com/crashunix" \
     "$IMAGE_NAME" \
     bash -c "make -j\$(nproc) Image dtbs modules"
 
