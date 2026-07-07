@@ -17,6 +17,8 @@ RUN apt-get update && apt-get install -y \
     clang \
     curl \
     zip \
+    gcc-aarch64-linux-gnu \
+    gcc-arm-linux-gnueabi \
     && rm -rf /var/lib/apt/lists/*
 
 WORKDIR /src
